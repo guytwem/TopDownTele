@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,6 +11,10 @@ namespace TopDown.Movement
     {
         public Camera cam;
         public NavMeshAgent agent;
+        
+        public GameObject fireballPrefab;
+        public Transform spawnPos;
+        public Transform swordPos;
 
         [FormerlySerializedAs("s_SelectAbility")] public SelectAbility sSelectAbility;
         
@@ -32,11 +37,11 @@ namespace TopDown.Movement
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                sSelectAbility.charAbilities[characterAbilities[0]].TriggerAbility();
+                Fireball();
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
-                sSelectAbility.charAbilities[characterAbilities[1]].TriggerAbility();
+                Thrust();
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -49,23 +54,33 @@ namespace TopDown.Movement
 
 
         }
-
-        void AddAbility(int abilityIndex)
+        private void Fireball()
         {
-            characterAbilities.Add(abilityIndex);
+            GameObject fireballGameObject = Instantiate(fireballPrefab);
+            Physics.IgnoreCollision(fireballGameObject.GetComponent<Collider>(), spawnPos.parent.GetComponent<Collider>());
+
+            fireballGameObject.transform.position = spawnPos.position;
+
+            Vector3 rotation = fireballGameObject.transform.rotation.eulerAngles;
+            
+            fireballGameObject.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
+
+            float fireballSpeed = 15;
+            fireballGameObject.GetComponent<Rigidbody>().AddForce(spawnPos.forward * fireballSpeed, ForceMode.Impulse);
+
+            StartCoroutine(DestroyObjectAfterTime(fireballGameObject, 5));
         }
 
-        void RemoveAbility(int abilityIndex)
+        private void Thrust()
         {
-            for (int i = 0; i < characterAbilities.Count; i++)
-            {
-                if (characterAbilities[i] == abilityIndex)
-                {
-                    characterAbilities.Remove(i);
-                    return;
-                    
-                }
-            }
+            swordPos.transform.localPosition = Vector3.Lerp(spawnPos.localPosition, new Vector3(0, 0, 2), 0.1f);
+        }
+        
+        private IEnumerator DestroyObjectAfterTime(GameObject fireballGameObject, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            
+            Destroy(fireballGameObject);
         }
     }
 }

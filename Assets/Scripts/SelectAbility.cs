@@ -8,6 +8,7 @@ namespace TopDown.Abilities
     {
         public UseAbility[] charAbilities;
         
+        
     }
 }
 

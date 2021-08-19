@@ -23,7 +23,7 @@ namespace TopDown.Abilities
             
             fireballGameObject.GetComponent<Rigidbody>().AddForce(fireballSpawn.forward * fireballSpeed, ForceMode.Force);
 
-            StartCoroutine(DestroyObjectAfterTime(fireballGameObject, 10));
+            StartCoroutine(DestroyObjectAfterTime(fireballGameObject, 5));
         }
 
         private IEnumerator DestroyObjectAfterTime(GameObject fireballGameObject, float delay)

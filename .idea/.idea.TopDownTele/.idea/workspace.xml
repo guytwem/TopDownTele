@@ -61,6 +61,8 @@
       <updated>1628826876814</updated>
       <workItem from="1628826882878" duration="1414000" />
       <workItem from="1629241860719" duration="6673000" />
+      <workItem from="1629334944156" duration="1146000" />
+      <workItem from="1629336717868" duration="1418000" />
     </task>
     <servers />
   </component>
@@ -72,24 +74,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs</url>
-          <line>34</line>
-          <properties documentPath="C:\Unity Projects\TopDownTele\Assets\Scripts\PlayerMovement.cs" initialLine="34" containingFunctionPresentation="method 'Update'">
-            <startOffsets>
-              <option value="947" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1016" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
