@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TopDown.Abilities;
+using TopDown.Teleporter;
 using UnityEngine.Serialization;
 
 namespace TopDown.Movement
@@ -11,6 +13,8 @@ namespace TopDown.Movement
     {
         public Camera cam;
         public NavMeshAgent agent;
+
+        private Teleporter.Teleporter _teleporter;
         
         public GameObject fireballPrefab;
         public Transform spawnPos;
@@ -52,6 +56,7 @@ namespace TopDown.Movement
                 sSelectAbility.charAbilities[characterAbilities[3]].TriggerAbility();
             }
 
+            
 
         }
         private void Fireball()
@@ -82,6 +87,29 @@ namespace TopDown.Movement
             
             Destroy(fireballGameObject);
         }
+
+        /*public void Interact()
+        {
+            RaycastHit hit;
+            if(Physics.SphereCast(gameObject.transform.position,15f,gameObject.transform.forward,out hit, 20f,  layerMask:3))
+            {
+                Debug.Log(hit);
+                if (hit.collider.CompareTag("TeleporterOne"))
+                {
+                    _teleporter.tpOne = true;
+                    _teleporter.Teleport(gameObject.transform.position);
+                    _teleporter.tpOne = false;
+                }
+                if (hit.collider.CompareTag("TeleporterTwo"))
+                {
+                    _teleporter.tpTwo = true;
+                    _teleporter.Teleport(gameObject.transform.position);
+                    _teleporter.tpTwo = false;
+                }
+            }
+            
+        }*/
+        
     }
 }
 

@@ -4,29 +4,37 @@ using UnityEngine;
 
 namespace TopDown.Abilities
 {
-    public class Fireball : UseAbility
+    public class Fireball : MonoBehaviour
     {
         public GameObject fireballPrefab;
         public Transform fireballSpawn;
-        private float fireballSpeed = 5;
-        
-        public override void TriggerAbility()
+        public float fireballSpeed = 5f;
+
+        private void Update()
         {
-            GameObject fireballGameObject = Instantiate(fireballPrefab);
-            Physics.IgnoreCollision(fireballGameObject.GetComponent<Collider>(), fireballSpawn.parent.GetComponent<Collider>());
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                ShootFire();
+            }
+        }
 
-            fireballGameObject.transform.position = fireballSpawn.position;
+        public void ShootFire()
+        {
+            GameObject fireballGameObject = Instantiate(fireballPrefab); // instantiate prefab
+            Physics.IgnoreCollision(fireballGameObject.GetComponent<Collider>(), fireballSpawn.parent.GetComponent<Collider>()); //ignore collision between player and gameObject
 
-            Vector3 rotation = fireballGameObject.transform.rotation.eulerAngles;
+            fireballGameObject.transform.position = fireballSpawn.position; //where the fireball starts from
+
+            Vector3 rotation = fireballGameObject.transform.rotation.eulerAngles; // fireball starting rotation
             
             fireballGameObject.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
             
-            fireballGameObject.GetComponent<Rigidbody>().AddForce(fireballSpawn.forward * fireballSpeed, ForceMode.Force);
+            fireballGameObject.GetComponent<Rigidbody>().AddForce(fireballSpawn.forward * fireballSpeed, ForceMode.Force); // adds force propelling forward
 
-            StartCoroutine(DestroyObjectAfterTime(fireballGameObject, 5));
+            StartCoroutine(DestroyObjectAfterTime(fireballGameObject, 5)); //destroy the fireball after 5 seconds
         }
 
-        private IEnumerator DestroyObjectAfterTime(GameObject fireballGameObject, float delay)
+        private IEnumerator DestroyObjectAfterTime(GameObject fireballGameObject, float delay) // destroy gameObject after a delay
         {
             yield return new WaitForSeconds(delay);
             
