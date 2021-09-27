@@ -353,6 +353,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8033549673996259334, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
   m_PrefabInstance: {fileID: 910090976}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &356638619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8033549673996259335, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
+  m_PrefabInstance: {fileID: 910090976}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356638615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b051ae27b3aa19448b88ebc918ea4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &382030936
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +846,34 @@ PrefabInstance:
     - target: {fileID: 8033549673996259334, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
       propertyPath: m_Name
       value: FirstPersonPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033549673996259335, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033549673996259335, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033549673996259335, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 356638619}
+    - target: {fileID: 8033549673996259335, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033549673996259335, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLanding
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033549673996259335, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FirstPersonController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033549673996259335, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8033549673996259338, guid: 9f550ffebff7cde4ab6f3069ae9020ac, type: 3}
       propertyPath: m_RootOrder
