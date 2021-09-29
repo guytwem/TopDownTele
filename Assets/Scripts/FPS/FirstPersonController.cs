@@ -7,6 +7,11 @@ public class FirstPersonController : MonoBehaviour
 {
     
     public CharacterController controller;
+    public float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
+    public Transform cam;
+
+
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -35,6 +40,11 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); // cjecks if the player is on the ground, returns true or false
@@ -44,14 +54,26 @@ public class FirstPersonController : MonoBehaviour
             velocity.y = -2f;
         }
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
-        animator.SetFloat("Speed", Mathf.Abs(horizontal + vertical));
-
-        Vector3 move = transform.right * horizontal + transform.forward * vertical;
         
-        controller.Move(move * speed * Time.deltaTime);
+
+        //Vector3 move = transform.right * horizontal + transform.forward * vertical;
+        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
+
+        animator.SetFloat("Speed", direction.magnitude);
+
+        if (direction.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        }
+        
+        
 
         if(Input.GetButtonDown("Jump") && isGrounded) // if space is pressed and player is on ground
         {

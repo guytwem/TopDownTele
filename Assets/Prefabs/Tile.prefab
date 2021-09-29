@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4018254268057319881}
   - component: {fileID: 8149421596468164195}
   - component: {fileID: 2067091019291063481}
-  m_Layer: 0
+  - component: {fileID: 2628026638792800608}
+  m_Layer: 8
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bffc8995c84f3c6468460c509a5e602c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,5 +94,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.1530292, y: 1.0661565, z: 1.203742}
+  m_Center: {x: 0.019369245, y: -0.033078145, z: -0.020846844}
+--- !u!114 &2628026638792800608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7462509609393192881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37657c4bed11e545a3726a945226734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100

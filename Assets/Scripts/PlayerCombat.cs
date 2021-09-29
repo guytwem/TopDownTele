@@ -39,7 +39,15 @@ public class PlayerCombat : MonoBehaviour
         foreach(Collider enemy in hitEnemies)
         {
             Debug.Log("we Hit " + enemy.name);
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            if(enemy.tag == "Enemy")
+            {
+                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            }
+            
+            if(enemy.tag == "Tile")
+            {
+                enemy.GetComponent<Tile>().TileTakeDamage(attackDamage);
+            }
         }
     }
 

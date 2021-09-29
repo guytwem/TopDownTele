@@ -16,6 +16,12 @@ public class FireballObject : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             other.GetComponent<Enemy>().TakeDamage(fireballDamage);
+            Destroy(gameObject);
+        }
+        if(other.gameObject.tag == "Tile")
+        {
+            other.GetComponent<Tile>().TileTakeDamage(fireballDamage);
+            Destroy(gameObject);
         }
         
     }

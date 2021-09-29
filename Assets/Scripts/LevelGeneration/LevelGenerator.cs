@@ -11,6 +11,9 @@ namespace TopDown.LevelGeneration
         public Transform[] startingPos;
         public GameObject[] rooms; //index 0 = LR, index 1 = LRB, index 2 = LRT, index 3 = LRTB
 
+        public GameObject teleporterTwoPrefab;
+        public GameObject teleporterThreePrefab;
+
         public LayerMask room;
 
         private int downCounter;
@@ -32,7 +35,8 @@ namespace TopDown.LevelGeneration
         {
         int randStartingPos = Random.Range(0, startingPos.Length); // Randomise starting point
         transform.position = startingPos[randStartingPos].position; // setting the starting position to the random point
-            player.transform.position =  new Vector3(startingPos[randStartingPos].position.x, (startingPos[randStartingPos].position.y + 3));
+            //player.transform.position =  new Vector3(startingPos[randStartingPos].position.x, (startingPos[randStartingPos].position.y + 3));
+         teleporterTwoPrefab.transform.position = new Vector3(startingPos[randStartingPos].position.x, (startingPos[randStartingPos].position.y + 3));
         Instantiate(rooms[0], transform.position, Quaternion.identity); // Instantiate  room 0
 
         direction = Random.Range(1, 6); // randomise the direction
@@ -142,6 +146,7 @@ namespace TopDown.LevelGeneration
                 }
                 else
                 {
+                    teleporterThreePrefab.transform.position = transform.position;
                     stopGeneration = true;
                 }
             
